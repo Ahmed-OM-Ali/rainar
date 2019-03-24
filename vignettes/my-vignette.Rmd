@@ -1,0 +1,32 @@
+---
+title: "rainar: A package to analyse rainfall data"
+author: "Ahmed Ali"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction to rainar
+rainar is a simple package which can be applied to monthly rainfall data. It applies a linear and gamma glm to model the data. You can then use the output to the function which applies these models by using the other two functions provided by the package to obtain plots and summary statistics.
+
+## Dublin airport rainfall data - dublin_airport_data
+This example dataset is taken from https://www.met.ie/climate/available-data/monthly-data. Each month is the mean of the years 2016 to 2018, this is done for the response RMM and the covariates. The response RMM is the total rainfall in millimetres for Dublin airport, the covariate mtemp is the mean temperature in degrees celsius and Soiltemp is the mean 10cm soil temperature.
+
+## rain_fit function
+rain_fit fits two models to the dataset, a linear model and a gamma glm. It takes in an input y, a response variable, which should be the monthly rainfall measurements. The other input is X, covariate, and the final input is rain_data where the user inputs the dataset. The function then fits the models and returns a short summary of the models. To use the function the user should assign the output to an object.
+
+## rain_plot function
+The rain_plot function produces a plot comparing the estimates of the models with the actual monthly rainfall. Each month has a single observation per model. The input for this function are the response y, the output of rain_fit obj, and the dataset rain_data.
+
+## rain_summary function
+The rain_summary function outputs summary statistics and statistical diagnostic tools for the user to decide which model they prefer.
+
